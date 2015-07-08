@@ -1,0 +1,1 @@
+package com.ei.loaders{			import flash.events.IEventDispatcher;		public interface ILoadProgress extends IEventDispatcher{				function get loaded():Boolean;		function get bytesLoaded():int;		function get bytesTotal():int;		function startLoader():void;		function get initialized():Boolean;			}}

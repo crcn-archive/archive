@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/layer
+END
+LayerStructure.as
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/layer/LayerStructure.as
+END
+ChannelLengthInfo.as
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/layer/ChannelLengthInfo.as
+END
+ChannelSourceRange.as
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/layer/ChannelSourceRange.as
+END
+LayerPixelData.as
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/layer/LayerPixelData.as
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/core
+END
+Rect.as
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/core/Rect.as
+END
+SliceRect.as
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/core/SliceRect.as
+END
+PString.as
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/core/PString.as
+END
+PStringB2.as
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/core/PStringB2.as
+END
+PStringB4.as
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/core/PStringB4.as
+END
+VString.as
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/core/VString.as
+END

@@ -1,0 +1,1 @@
+package com.ei.loaders{		import flash.net.URLRequest;		public interface ILoader extends ILoadProgress{				function load(url:String):void;		function get data():Object;			}}

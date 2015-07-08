@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="initApp();">
+	<mx:states>
+		<mx:State name="code">
+			<mx:SetProperty target="{button2}" name="label" value="back"/>
+			<mx:SetEventHandler target="{button2}" name="click" handler="currentState=''"/>
+			<mx:AddChild relativeTo="{controlbar1}" position="before">
+				<mx:TextArea text="{code}" left="24" right="10" top="10" bottom="41"/>
+			</mx:AddChild>
+		</mx:State>
+	</mx:states>
+	<mx:Style source="assets/css/Main.css" />
+	<mx:Script>
+		<![CDATA[
+			import com.bridge.psd.BridgeGenerator;
+			import com.ei.psd2.layerResources.Shadow;
+			import mx.rpc.remoting.Operation;
+			import mx.rpc.remoting.RemoteObject;
+			import mx.graphics.codec.PNGEncoder;
+			import com.bbuilder.net.SaveBitmapBytecode;
+			import mx.core.UIComponent;
+			import com.ei.display.decor.Dragger;
+			import com.ei.net.BitmapBin;
+			import com.ei.psd2.BinaryPSDReader;
+			import com.ei.psd2.Layer;
+			import com.ei.psd2.PSDEvent;
+			import com.ei.psd2.PSD;
+			import com.djw.events.io.UploadFailedEvent;
+			import com.djw.events.io.UploadCompleteEvent;
+			import com.djw.io.FileUploader;
+			
+			private static const AMF_GATEWAY:String  	  = "http://localhost:8888/htdocs/PSDToBridge/assets/amfphp/gateway.php";
+			private static const UPLOAD_ROOT:String       = "http://localhost:8888/htdocs/PSDToBridge/assets/php/";
+			private static const UPLOAD_SCRIPT:String     = "upload.php";
+			private static const UPLOAD_PNG:String		  = "upload_png.php";
+			private static const UPLOAD_TEMP_DIR:String   = "temp";
+			private static const UPLOAD_SCRIPT_DIR:String = "script";
+			
+			private var _psd:PSD;
+			private var _uploader:FileUploader;
+			private var _pngLoaders:Dictionary;
+			
+			private var _saver:SaveBitmapBytecode;
+			
+			
+			[Bindable]
+			public var code:String;
+		
+		private function initApp():void
+		{
+
+			_saver = new SaveBitmapBytecode(AMF_GATEWAY);
+		}
+		
+		private function arrayToByte(array:Array):ByteArray
+		{
+			var bt:ByteArray = new ByteArray();
+			
+			for(var i:int = 0; i < array.length; i++)
+			{
+				bt.writeByte(array[i]);
+			}
+			
+			bt.position = 0;
+			
+			
+			return bt;
+		}
+			
+			private var _browser:FileReference;
+			
+			private function init():void
+			{
+				
+				//var remoteObj:RemoteObject = new RemoteObject();
+				//remoteObj.
+				
+				
+				var filter:FileFilter = new FileFilter("Photoshop Documents","*.psd");
+				
+				_browser = new FileReference();
+				_browser.browse([filter]);
+				_browser.addEventListener(Event.SELECT,onSelect);
+				_browser.addEventListener(Event.COMPLETE,onComplete);
+				
+				
+				
+				
+			}	
+			
+			private function onSelect(event:Event):void
+			{
+				_browser.load();
+			}
+			
+			private function onComplete(event:Event):void
+			{
+				_psd = new PSD();
+				
+				
+				_psd.addEventListener(PSDEvent.COMPLETE,onPSDComplete);
+				_psd.stream = _browser.data;
+				
+				
+				var generator:BridgeGenerator = new BridgeGenerator();
+				code = generator.generateBridge(psdContent,_psd).toString();
+				
+			}
+			
+			
+			private function onPSDComplete(event:PSDEvent):void
+			{
+
+				event.target.removeEventListener(event.type,onPSDComplete);
+				
+				status = "Loaded PSD Document";
+				psdContent.height = _psd.height;
+				
+			}
+			
+			
+			
+			private function saveDocument():void
+			{
+				
+				status = "Gnerating bridge code";
+				
+				
+				
+				
+				_saver.save(_psd.layers);
+				
+				
+				
+				
+			}
+			
+			
+			private function onSaveComplete(event:Event):void
+			{
+				
+				status = "bridge code successfully generated";
+				
+			}
+			
+			private function clearPSDHolder():void
+			{
+				
+				if(PSDOut.numChildren > 0)
+					PSDOut.removeChildAt(0);
+					
+				PSDOut.addChild(new UIComponent());
+				
+				
+			}
+			
+			
+			private function getBridgeSegment(obj:*):String
+			{
+				return null;
+			}
+			
+			private function set status(value:String):void
+			{
+				PSDOut.title = "PSD Output: "+value;
+			}
+			
+			
+		]]>
+	</mx:Script>
+	
+	<mx:Panel id="PSDOut" x="0" y="0" width="100%" height="100%" layout="absolute" title="PSD Output">
+		<mx:UIComponent id="psdContent" />
+		<mx:ControlBar id="controlbar1">
+			<mx:Spacer width="100%" />
+			<mx:Button label="Download" click="currentState='code'"  id="button2"/>
+			<mx:Button label="Load PSD file" click="init();"  id="button1"/>
+			<!--<mx:Button label="Generate Bridge Code" click="saveDocument();" />-->
+		</mx:ControlBar>
+	</mx:Panel>
+	
+</mx:Application>

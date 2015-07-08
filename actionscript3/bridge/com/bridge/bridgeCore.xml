@@ -1,0 +1,208 @@
+<Bridge>
+
+	
+	<Bridge xmlns:broadcast = "com.bridge.module.JSBroadcastModule" />
+	
+	<broadcast:init />
+
+	<Bridge xmlns:external = "com.bridge.module.ExternalAssetModule" />
+	<Bridge xmlns:js      = "com.bridge.module.JavascriptModule" 				     />
+	<Bridge xmlns:bridge  = "com.bridge.module.FMLHandlerModule" 				     />
+	
+	<Bridge xmlns:observer = "com.bridge.module.EventModule"					 	 />
+	<Bridge xmlns:action   = "com.bridge.module.ScriptModule"						 />
+	<Bridge xmlns:instance = "com.bridge.module.component.InstanceModule"		     />
+	
+	<Bridge xmlns:change      = "com.bridge.module.ChangeComponentPropertyModule"    />
+	<Bridge xmlns:condition   = "com.bridge.module.ConditionalModule"				 />
+	<Bridge xmlns 			  = "com.bridge.module.component.ComponentModule" 		 />
+	<Bridge xmlns:call		  = "com.bridge.module.CallFunctionModule"				 />
+	<Bridge xmlns:node		  = "com.bridge.module.NodeInstanceModule"				 />
+	<Bridge xmlns:for		  = "com.bridge.module.LoopModule"						 />
+	<Bridge xmlns:create	  = "com.bridge.module.CreateFunctionModule"			 />
+	<Bridge xmlns:execute     = "com.bridge.module.ScriptExclusionModule"			 />
+	<Bridge xmlns:variable    = "com.bridge.module.VariableModule"			 />
+	
+	<!-- route all component instances so children are added to the root -->
+	<addRoute target="{root}" nodeName="Bridge" />
+
+	<Bridge xmlns      = "com.bridge.module.SleepModule"					 />
+	
+	<!--<classDefintion source="com.ei.display.decor.Constraints">
+		<constructor>
+			<param name="target" />
+		</constructor>
+	</classDefintion>-->
+	
+	<classDefinition name="Style" source="com.bridge.ui.style.CSSManager">
+		<process passRawChildren="true" childHandler="parse" />
+	</classDefinition>
+	
+	<classDefinition name="UIComponent" source="com.bridge.ui.core.UIComponent"/>
+	<!--<classDefinition source="com.bridge.ui.controls.grid.DataGrid" />
+	<classDefinition source="com.bridge.ui.controls.grid.DataGridColumn" />
+	<classDefinition source="com.bridge.ui.controls.grid.DataGridColumnRenderer" />--
+	<classDefinition source="com.bridge.ui.core.Container"/>
+	<classDefinition name="Spacer" source="com.bridge.ui.core.UIComponent">
+		<property name="style" value="backgroundAlphas:0;" />
+	</classDefinition>
+	
+	<classDefinition name="Canvas" source="com.bridge.ui.controls.Canvas" />
+	
+	<classDefinition name="Label" source="com.bridge.ui.controls.Label" />
+	<classDefinition  source="com.bridge.ui.controls.Text" />
+	<classDefinition  source="com.bridge.ui.controls.TextArea" />
+	<classDefinition  source="com.bridge.ui.controls.TextInput" />
+	<classDefinition source="com.bridge.ui.controls.Button" />
+
+	<classDefinition name="Image" source="com.bridge.ui.controls.Image" />
+
+	
+	<classDefinition source="com.ei.utils.ObjectUtils" />
+	<classDefinition source="com.ei.utils.StringUtils" />
+	<classDefinition source="com.ei.utils.ArrayUtils"  />
+	<classDefinition source="com.ei.utils.SpriteUtils"  />
+	
+	<classDefinition name="Dragger" source="com.ei.display.decor.Dragger">
+		<constructor>
+			<param name="target" />
+			<param name="type"   />
+			<param name="lockCenter" />
+			<param name="boundsRect" />
+		</constructor>
+	</classDefinition>
+	
+	<!-- tweens -->
+	<classDefinition source="com.bridge.ui.utils.tween.Tween" gcWhen="tweenComplete">
+		<constructor>
+			<param name="target"/>
+			<param name="property"/>
+			<param name="start" />
+			<param name="stop"/>
+			<param name="duration"/>
+		</constructor>
+	</classDefinition>
+
+
+	<!--Easing-->
+	<classDefinition source="com.bridge.ui.utils.tween.easing.Bounce"/>
+	<classDefinition source="com.bridge.ui.utils.tween.easing.Elastic"/>
+	<classDefinition source="com.bridge.ui.utils.tween.easing.Back"/>
+	<classDefinition source="com.bridge.ui.utils.tween.easing.Strong"/>
+	<classDefinition source="com.bridge.ui.utils.tween.easing.None"/>
+	<classDefinition source="com.bridge.ui.utils.tween.easing.Exponential"/>
+	<classDefinition source="com.bridge.ui.utils.tween.easing.Quadratic"/>
+	<classDefinition source="com.bridge.ui.utils.tween.easing.Regular"/>
+	<classDefinition source="com.bridge.ui.utils.tween.easing.Sinusoidal"/>
+	<classDefinition source="com.bridge.ui.utils.tween.easing.Strong"/>
+	
+
+
+	<!-- FLASH BUILT IN METHODS-->
+	<classDefinition source="Math" />
+	
+	<!--simple-->
+	<classDefinition source="Array">
+		<process childHandler="push"/>
+	</classDefinition>
+	
+	<classDefinition source="Object" />
+	
+	<classDefinition source="String">
+		<process passRawChildren="true" childHandler="value"/>
+		<constructor>
+			<param name="value" />
+		</constructor>
+	</classDefinition>
+	
+	<classDefinition source="flash.display.SimpleButton" />
+	
+	
+	<classDefinition source="Number">
+		<constructor>
+			<param name="value"/>
+		</constructor>
+	</classDefinition>
+
+	<classDefinition source="flash.net.URLRequest">
+		<constructor>
+			<param name="url"/>
+		</constructor>
+	</classDefinition>
+	
+	<classDefinition source="flash.display.Sprite"/>   
+	
+	<classDefinition source="flash.text.TextField" />
+	<classDefinition name="link" source="flash.display.Loader">
+		<property name="load" newName="rel"/>
+		<process childHandler="load"/>
+	</classDefinition>
+
+	
+	<classDefinition source="flash.geom.Rectangle"/>
+	
+	<classDefinition source="flash.events.MouseEvent">
+		<constructor>
+			<param name="name"/>
+		</constructor>
+	</classDefinition>
+	
+	<classDefinition source="flash.ui.Keyboard" />
+	<classDefinition source="com.ei.utils.keys.KeyboardControl">
+		<constructor>
+			<param name="target" />
+		</constructor>
+	</classDefinition>
+	
+	<classDefinition source="flash.net.FileReferenceList" />
+
+	<classDefinition source="flash.events.EventDispatcher" />
+	<classDefinition source="flash.events.Event" />
+	
+	<classDefinition source="flash.net.NetConnection" />
+	<classDefinition source="flash.media.Video" />
+	<classDefinition source="flash.net.NetStream">
+		<constructor>
+			<param name="netConnection" />
+		</constructor>
+	</classDefinition>
+	
+	<classDefinition source="com.bridge.ui.controls.media.VideoPlayer" />
+	<classDefinition name="AudioPlayer" source="com.bridge.ui.controls.media.audio.AudioFactory"   />
+	
+	<classDefinition source = "com.ei.utils.Sleep"    		 />
+	<classDefinition source = "XML">
+		<constructor>
+			<param name="src" />
+		</constructor>
+	</classDefinition>
+	<classDefinition source = "XMLList" 				  	 />
+	<classDefinition source = "flash.xml.XMLNode"     		 />
+	<classDefinition source = "flash.xml.XMLDocument" 		 />
+	<classDefinition source = "flash.net.URLRequest"  		 />
+	<classDefinition source = "flash.net.URLLoader"   		 />
+	<classDefinition source = "com.bridge.node.BridgeNode"   />
+	<classDefinition source = "flash.display.Loader" 		 />
+	
+	<classDefinition source = "flash.filters.GlowFilter" 	 />
+	
+	
+	
+	<bridge:omitParser node="CSS" property="parse" />
+	
+	<classDefinition source="flash.display.Bitmap" />
+	<classDefinition source="flash.display.BitmapData" />
+	
+	
+	
+	<!-- load in the script -->
+	
+	<action:script>
+		<![CDATA[
+			import flash.net.navigateToURL;
+		]]>
+	</action:script>
+	
+	
+</Bridge>
+			

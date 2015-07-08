@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/section
+END
+PSDFileHeader.as
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/section/PSDFileHeader.as
+END
+PSDLayerAndMask.as
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/section/PSDLayerAndMask.as
+END
+PSDImageData.as
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/section/PSDImageData.as
+END
+PSDImageResources.as
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/section/PSDImageResources.as
+END
+PSDColorMode.as
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/132/as3/PSDParser/src/com/voidelement/images/psd/section/PSDColorMode.as
+END

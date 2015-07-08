@@ -1,0 +1,208 @@
+<Bridge>
+
+	
+
+	<Bridge xmlns:js      = "com.bridge.modules.JavascriptModule" 				     />
+	<Bridge xmlns:php  	  = "com.bridge.modules.PHPModule"						     />
+	<!--<Bridge xmlns:server = "com.bridge.modules.PHPServerModule"					 />-->
+	<Bridge xmlns:bridge  = "com.bridge.modules.FMLHandlerModule" 				     />
+	
+	<Bridge xmlns:observer = "com.bridge.modules.EventModule"					 	 />
+	<Bridge xmlns:call	   = "com.bridge.modules.CallFunctionModule" 			 	 />
+	
+	<Bridge xmlns:states   = "com.bridge.modules.StateModule"					     />
+	
+	<Bridge xmlns:as       = "com.bridge.modules.ScriptModule"						 />
+	<Bridge xmlns:instance = "com.bridge.modules.component.InstanceModule"		     />
+	
+	
+	<Bridge xmlns:change      = "com.bridge.modules.ChangeComponentPropertyModule"   />
+	<!--<Bridge xmlns:parse       = "com.bridge.modules.ParseModule" 					 />-->
+	<Bridge xmlns:condition   = "com.bridge.modules.ConditionalModule"				 />
+	
+	
+	<Bridge xmlns:do   = "com.bridge.modules.RemoveChildModule"			     />
+	
+	
+	
+	<Bridge xmlns      = "com.bridge.modules.LoopModule"					 />
+	<Bridge xmlns	   = "com.bridge.modules.FunctionModule"				 />
+	<Bridge xmlns	   = "com.bridge.modules.AddChildModule"				 />
+	<Bridge xmlns      = "com.bridge.modules.SleepModule"					 />
+	<Bridge xmlns:up   = "com.bridge.modules.FileUploadModule"				 />
+	<!--<Bridge xmlns:htmlGen = "com.bridge.modules.HTMLGenModule"				 />-->
+	
+	<observer:addShortEvent name="click" event="click" />
+	
+	<!-- EXO INVERTS CLASSES -->
+
+	<!-- Style Manager takes in a loaded style sheet and parses it as a singleton so it can be useb
+	by and StyleableDisplayObject-->
+	<classDefinition name="CSS" source="com.ei.utils.style.CSSManager">
+		<process passRawChildren="true" childHandler="parse" />
+	</classDefinition>
+	
+	
+	<classDefintion source="com.ei.display.decor.Constraints">
+		<constructor>
+			<param name="target" />
+		</constructor>
+	</classDefintion>
+	
+	<!-- Styleable Display Objects-->
+	<classDefinition name="UIComponent" source="com.ei.ui.core.EUIComponent"/>
+	<classDefinition name="Aligner" source="com.ei.ui.util.Aligner">
+		<constructor>
+			<param name="target" />
+		</constructor>
+	</classDefinition>
+	<classDefinition name="Container" source="com.ei.ui.core.EContainer"/>
+	<classDefinition name="Canvas" source="com.ei.ui.core.ECanvas"/>
+	<classDefinition name="Spacer" source="com.ei.ui.core.EContainer"/>
+	
+	<classDefinition name="Label" source="com.ei.ui.controls.ELabel">
+		<process childHandler="htmlText" />
+	</classDefinition>
+	
+	<classDefinition name="TextArea" source="com.ei.ui.controls.ETextArea">
+		<process childHandler="htmlText" />
+	</classDefinition>
+	
+	<classDefinition name="VectorText" source="com.ei.ui.controls.VectorText">
+		<process childHandler="text" />
+	</classDefinition>
+	
+	
+	<classDefinition name="Image" source="com.ei.ui.containers.EImage"/>
+
+	<classDefinition name="SBox" source="com.ei.ui.core.EBox">
+		<constructor>
+			<param name="align"/>
+		</constructor>
+	</classDefinition>
+	
+	<classDefinition name="Box" source="com.ei.ui.core.EPlainBox">
+		<constructor>
+			<param name="align"/>
+		</constructor>
+	</classDefinition>
+	
+	<classDefinition name="Dragger" source="com.ei.display.decor.Dragger">
+		<constructor>
+			<param name="target" />
+			<param name="type"   />
+			<param name="lockCenter" />
+			<param name="boundsRect" />
+		</constructor>
+	</classDefinition>
+	
+	<classDefinition name="Button" source="com.ei.ui.controls.EButton">
+	</classDefinition>
+	
+	<classDefinition source="com.ei.display.UnresizeableSprite" />
+	
+	<!-- proxies mask the objects so you have direct values to the prixy, which then pass those values to the objects-->	
+	
+	<!-- tweens -->
+	<classDefinition source="com.ei.utils.tween.Tween">
+		<constructor>
+			<param name="target"/>
+			<param name="property"/>
+			<param name="start" />
+			<param name="stop"/>
+			<param name="duration"/>
+		</constructor>
+	</classDefinition>
+
+
+	<!--Easing-->
+	<classDefinition source="com.ei.utils.tween.easing.Bounce"/>
+	<classDefinition source="com.ei.utils.tween.easing.Elastic"/>
+	<classDefinition source="com.ei.utils.tween.easing.Back"/>
+	<classDefinition source="com.ei.utils.tween.easing.Strong"/>
+	<classDefinition source="com.ei.utils.tween.easing.None"/>
+	<classDefinition source="com.ei.utils.tween.easing.Exponential"/>
+	<classDefinition source="com.ei.utils.tween.easing.Quadratic"/>
+	<classDefinition source="com.ei.utils.tween.easing.Regular"/>
+	<classDefinition source="com.ei.utils.tween.easing.Sinusoidal"/>
+	<classDefinition source="com.ei.utils.tween.easing.Strong"/>
+	
+
+
+	<!-- FLASH BUILT IN METHODS-->
+	<classDefinition source="Math" />
+	
+	<!--simple-->
+	<classDefinition source="Array">
+		<process childHandler="push"/>
+	</classDefinition>
+	
+	<classDefinition source="Object" />
+	
+	<classDefinition source="String">
+		<process passRawChildren="true" childHandler="text"/>
+		<constructor>
+			<param name="text"/>
+		</constructor>
+	</classDefinition>
+	
+	<classDefinition source="flash.display.SimpleButton" />
+	
+	
+	<classDefinition source="Number">
+		<constructor>
+			<param name="value"/>
+		</constructor>
+	</classDefinition>
+
+	<!---->
+	<classDefinition source="flash.net.URLRequest">
+		<constructor>
+			<param name="url"/>
+		</constructor>
+	</classDefinition>
+	
+	<classDefinition source="flash.display.Sprite"/>   
+	
+	<classDefinition source="flash.text.TextField">
+		<process passRawChildren="true" childHandler="htmlText" />
+		<!--<property name="autoSize" value="left"/>
+		<property name="multiline" value="true"/>
+		<property name="wordWrap" value="true"/>-->
+	</classDefinition>
+
+	<classDefinition name="link" source="flash.display.Loader">
+		<property name="load" newName="rel"/>
+		<process childHandler="load"/>
+	</classDefinition>
+
+	
+	<classDefinition source="flash.geom.Rectangle"/>
+	
+	<classDefinition source="flash.events.MouseEvent">
+		<constructor>
+			<param name="name"/>
+		</constructor>
+	</classDefinition>
+	
+	<classDefinition source="flash.net.FileReferenceList" />
+
+	<classDefinition source="flash.events.EventDispatcher" />
+	<classDefinition source="flash.events.Event" />
+	
+	<classDefinition source="flash.net.NetConnection" />
+	<classDefinition source="flash.media.Video" />
+	<classDefinition source="flash.net.NetStream">
+		<constructor>
+			<param name="netConnection" />
+		</constructor>
+	</classDefinition>
+	
+	<classDefinition source="com.ei.media.VideoPlayer" />
+	
+	
+	<classDefinition name="ScrollableContent" source="com.ei.ui3.scroll.ScrollableContent" />
+	<classDefinition name="ScrollBar"	source="com.ei.ui3.scroll.ScrollBar" />
+	
+</Bridge>
+			
