@@ -1,0 +1,32 @@
+<Bridge>  
+	
+	<external:asset source="pv3d.swf" type="rsl" />
+	
+	<classDefinition source="flash.display.BitmapData">
+		<constructor>
+			<param name="width" />
+			<param name="height" />
+			<param name="transparent" />
+			<param name="fillColor" />
+		</constructor>
+	</classDefinition>
+	<classDefinition source="org.papervision3d.materials.BitmapMaterial">
+		<constructor>
+			<param name="mat" />
+		</constructor>
+	</classDefinition>
+	<classDefinition source="org.papervision3d.objects.primitives.Sphere">
+		<constructor>
+			<param name="mat" />
+			<param name="radius" value="100" />
+			<param name="segW" value="8"/>
+			<param name="segH" value="6"/>
+			
+		</constructor>
+	</classDefinition>
+	<classDefinition source="org.papervision3d.view.BasicView">
+  
+	</classDefinition>
+	
+	
+</Bridge>

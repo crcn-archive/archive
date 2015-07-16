@@ -1,0 +1,58 @@
+<Bridge>
+	<external:asset source="assets/swf/APEExport.swf" type="component" />
+	
+	<classDefinition source="org.cove.ape.APEngine" />
+	<classDefinition source="org.cove.ape.Group" />
+	<classDefinition source="org.cove.ape.CircleParticle" />
+	<classDefinition source="org.cove.ape.RectangleParticle" />
+	<classDefinition source="org.cove.ape.Vector" />
+	<classDefinition source="flash.display.Loader" />
+	<classDefinition source="flash.net.URLLoader" />
+	<classDefinition source="flash.net.URLRequest" />
+	<classDefinition source="flash.external.ExternalInterface" />
+	<classDefinition source="com.bridge.modules.JavascriptModule" />      
+	<classDefinition source="flash.events.ProgressEvent" />      
+	<classDefinition source="flash.net.URLStream" />
+
+	<as:script>
+		<![CDATA[
+		
+			ExternalInterface.addCallback("load",load);
+			
+			
+			function load(url,callback,progressCallback=null)
+			{     
+				var loader:URLLoader = new URLLoader();            
+				loader.addEventListener(Event.COMPLETE,onLoad);  
+				
+				if(progressCallback)    
+				{                          
+					root.addEventListener(Event.ENTER_FRAME,onProgress);  
+				}
+				ExternalInterface.call(progressCallback,0)
+				loader.load(new URLRequest(url));
+				
+				function onLoad(event:Event)
+				{   
+					
+				    root.removeEventListener(Event.ENTER_FRAME,onProgress);         
+					ExternalInterface.call(callback,event.target.data);
+					ExternalInterface.call(progressCallback,100)
+				   
+				}               
+				
+			
+				function onProgress(event:Event)
+				{                     
+					ExternalInterface.call(progressCallback,Math.round(loader.bytesLoaded/loader.bytesTotal * 100))
+					
+				}
+				
+				
+			}
+			
+			
+			
+		]]>
+	</as:script>
+</Bridge>

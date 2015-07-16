@@ -1,0 +1,37 @@
+<Bridge> 
+	
+	<Container instance:id="boxHolder" style="backgroundAlphas:0.3" percentWidth="100" percentHeight="100" />
+	<addRoute nodeName="Holder" target="{boxHolder}" />
+	
+	<TextArea text="to test the app click login and type user: 'user' and pass: 'pass'" percentWidth="100" />
+	<Container buttonMode="{true}" instance:id="loginButton" style="cornerRadius:5;"  width="100" height="50" verticalCenter="0" horizontalCenter="0">
+		<Label text="login" style="fontColor:#FFFFFF;" horizontalCenter="0" verticalCenter="0" />
+	 </Container>  
+	
+	 <observer:listen to="{loginButton}" for="click">
+		 
+		<external:asset source="{login()}" type="script" />
+	 </observer:listen>                                     
+	
+	<action:script> 
+		<![CDATA[   
+			
+			function login()
+			{
+				var user:String = #js:prompt("what's the username?");
+				var pass:String = #js:prompt("what's the pass?");  
+				var boxes:Number = #js:prompt("how many secret items do you want to show?"); 
+				
+				var script:String = "externalScript.php?user="+user+"&pass="+pass+"&secretNum="+boxes;
+				                 
+				return script;         
+				
+			}
+			
+			
+			
+			
+		]]>
+	</action:script>
+	                                                                                                                       
+</Bridge>

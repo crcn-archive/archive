@@ -1,0 +1,43 @@
+<Bridge xmlns:LoadManager="com.bridge.module.LoadManagerModule" xmlns:LoadManager2="com.bridge.module.LoadManagerModule"> 
+	
+	
+	<Container percentWidth="100" percentHeight="100">   
+		
+		<!-- we pause for 1 second so that the preloader can listen to both load managers--> 
+		<sleep time="1000" />  
+		
+   	 	<LoadManager:execute /> 
+	                                                 
+		<Image source="{#LoadManager:media('http://exoinverts.com/nebulas.jpg')}" percentWidth="100" percentHeight="100" />
+	
+	
+		<TextArea text="{#LoadManager:text('someText.txt')}" style="fontColor:#FFFFFF;" left="0" right="200" />
+	
+		<XMLDocument instance:id="xmlData" ignoreWhite="{true}" />
+	
+		<call:function target="{xmlData.parseXML}">
+			<String value="{#LoadManager:text('someXML.xml')}" />
+		</call:function>
+	 
+		<run script="{#js:alert(xmlData.firstChild+' &lt;- xml data');}" />  
+		
+		<LoadManager2:execute />     
+		            
+		<Image source="{#LoadManager2:media('http://exoinverts.com/icanhaz.jpeg')}" bottom="0" right="0" />
+		 
+		
+		<change:property target="{preloader}" text="DONE" right="{NaN}" verticalCenter="0" horizontalCenter="0" style="fontColor:#990099;fontSize:50;bold:true;underline:true;italic:true;" />
+	</Container> 
+	
+	<Label instance:id="preloader" text="loading..." right="0" style="fontColor:#FFFFFF;filters:" />
+	
+	<observer:listen to="{LoadManager}" for="progress">  
+		<change:property target="{preloader}" text="loading {Math.round(LoadManager.bytesLoaded/LoadManager.bytesTotal*100)} %" />
+	</observer:listen>     
+	
+	<observer:listen to="{LoadManager2}" for="progress">  
+		<change:property target="{preloader}" text="loading more: {Math.round(LoadManager2.bytesLoaded/LoadManager2.bytesTotal*100)} %" />
+	</observer:listen>
+	
+	                                                                                                                 
+</Bridge>

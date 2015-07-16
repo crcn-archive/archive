@@ -1,0 +1,8 @@
+<Bridge>  
+	<external:asset source="externalScript.xml" type="script" />
+	
+	<Container style="backgroundAlphas:0.5;backgroundColors:#FF6600;width:500;" right="0">
+		<external:asset source="externalScript.xml" type="script" />
+		<change:property target="{externalText}" text="change external variables" verticalCenter="0" horizontalCenter="0" />
+	</Container>
+</Bridge>

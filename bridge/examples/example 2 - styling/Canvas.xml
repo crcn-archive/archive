@@ -1,0 +1,25 @@
+<Bridge>  
+	<Style> 
+		.myStyle
+		{
+			fontColor:#FF6600;
+			fontSize:50;        
+			verticalCenter:0;
+			horizontalCenter:0; 
+			italic:true;
+			bold:true;
+		}   
+		
+		.myBox
+		{
+			backgroundColors:#000000,#FF6600,#009900,#990099;
+			backgroundAlphas:0.5,0.7,1,0.3;
+			backgroundRatios:50,100,150,255;
+			width:150;
+			height:200;              
+		}
+	</Style>
+	<Label text="hello world!" styleName=".myStyle" /> 
+	<Label text="Hello again!" style="right:0;fontColor:#009900;underline:true;bold:true;"  /> 
+	<Container styleName=".myBox" style="bottom:0;" right="0" />
+</Bridge>

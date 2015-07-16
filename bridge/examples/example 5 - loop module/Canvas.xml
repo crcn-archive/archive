@@ -1,0 +1,43 @@
+<Bridge>  
+	<Style> 
+	
+		.hBox
+		{
+			backgroundColors:#FF6600;
+			backgroundAlphas:0.01;
+			percentWidth:100;
+			percentHeight:100;
+			alignment:'horizontal';
+			gap:10;
+		}
+		.column
+		{
+			backgroundAlphas:0.5;
+			percentWidth:100;
+			percentHeight:100;
+			alignment:'vertical';
+			gap:10;
+		}
+		
+		.title
+		{
+			bold:true;
+			fontSize:30;
+		}
+	</Style>
+	<Container styleName=".hBox">
+		<Container styleName=".column">
+			<Label text="loop without delay" styleName=".title" />
+			<for:loop name="i" start="0" stop="10">
+				<Label text="looped {i} times" />
+			</for:loop>
+		</Container>
+		<Container styleName=".column">
+			<Label text="loop with delay" styleName=".title" />
+			<for:loop name="i" start="0" stop="10">
+				<Label text="looped {i} times" />
+				<sleep time="1000" />
+			</for:loop>
+		</Container>
+	</Container>	
+</Bridge>

@@ -1,0 +1,19 @@
+<Bridge> 
+	
+	 
+	<Container instance:id="someContainer" style="backgroundAlphas:0.3;percentWidth:100;percentHeight:50;" />  
+	                 
+	<TextArea text="Node names can be pointed to any instance created by the Component Module, and added to their child handler. By default, the child handler addChild." percentWidth="100" />
+	<addRoute nodeName="AddChildToSomeContainer" target="{someContainer}" />      
+	
+	
+	<AddChildToSomeContainer>
+		<Container style="bottom:0;"/>
+	</AddChildToSomeContainer>    
+	
+	<external:asset source="externalScript.xml" type="script" />              
+	
+	<sleep time="1000" />
+	
+	<Tween target="{someContainer}" property="percentHeight" start="50" stop="100" duration="2000" easingFunction="{Strong.easeOut}" />
+</Bridge>

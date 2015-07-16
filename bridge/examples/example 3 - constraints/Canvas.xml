@@ -1,0 +1,35 @@
+<Bridge>  
+	<Style> 
+		 
+		
+		.orangeBox
+		{
+			backgroundColors:#FF6600;
+		}
+		
+		Container > Label
+		{
+			verticalCenter:0;
+			horizontalCenter:0;
+			fontSize:12;
+		}
+	</Style>
+	<Container styleName=".orangeBox" right="0">
+		<Label text="right aligned" />
+	</Container>
+	<Container styleName=".orangeBox" right="0" bottom="0">
+		<Label text="bottom right aligned" />
+	</Container>
+	<Container styleName=".orangeBox" left="0" bottom="0">
+		<Label text="bottom left aligned" />
+	</Container>
+	<Container styleName=".orangeBox">
+		<Label text="top left aligned" />
+	</Container>
+	<Container styleName=".orangeBox" left="0" right="0" verticalCenter="0">
+		<Label text="left,right,vertical center contrained"  />
+	</Container>
+	<Container styleName=".orangeBox" top="0" bottom="0" horizontalCenter="0">
+		<Label text="top,bottom,horizontal center constrained" verticalCenter="-100" />
+	</Container>
+</Bridge>

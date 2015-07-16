@@ -1,0 +1,16 @@
+<Bridge>  
+	<TextArea text="You can easily include other SWF files into Bridge Applications. Unzip any SWC file, load the library.swf, and define the classes you want to use. This example uses Papervision 3D." percentWidth="100" y="10" x="10" />
+	
+	<external:asset source="pv3d.xml" type="script" />
+	
+	<BasicView instance:id="hwView" />
+	<BitmapData instance:id="worldBitmapData" width="512" height="256" transparent="{false}" fillColor="0" />
+	<run script="{worldBitmapData.perlinNoise(512,256,4,123456,true,false)}" />
+	<BitmapMaterial instance:id="worldMaterial" mat="{worldBitmapData}" />
+	<Sphere instance:id="world" mat="{worldMaterial}" radius="300" segW="10" segH="10" />
+	<run script="{#js:alert('not done');hwView.scene.addChild(world)}" />
+	
+	
+	
+	
+</Bridge>

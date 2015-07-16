@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Exo Inverts</title>
+		<script type="text/javascript" src="swfobject.js" />
+		<script type="text/javascript" src="Tween.js" />
+		<style type="text/css">
+	
+			/* hide from ie on mac \*/
+			html {
+				height: 100%;
+			
+			}
+	
+		
+			/* end hide */
+
+			body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				background-color: #FFFFFF;
+			}
+			#controls
+			{
+				height:30px;
+			}
+			
+
+			#contentBody
+			{
+				float:right;
+				width:100%;
+				height:100%;
+				color:#FFFFFF;
+				background-color:#000000;
+				
+			}
+			
+			
+			
+			#projects,#news
+			{
+				width:200px;
+				height:200px;
+				background-color:#000000;
+				float:right;
+				position:relative;
+				right:10px;
+				top:10px;
+				margin:0px;
+			}      
+			
+			#loading
+			{
+				background:url(assets/images/patt/star.jpg);
+				background-color:#333333;
+				height:100%;
+				width:100%;
+				position:absolute;
+			}
+			
+			#links
+			{
+				padding:10px;
+				float:right;
+			}
+			
+			a
+			{
+				text-decoration:none;
+				padding-right:10px;
+				
+			}
+			#percentLoaded
+			{
+				float:right;
+				position:relative;
+			}
+			
+			#content
+			{
+				width:90%;
+				height:90%;
+				margin-left:auto;
+				margin-right:auto;
+				color:#000000;
+			}
+			
+			#logo
+			{
+				margin:10px;
+			}
+			
+			
+		</style>
+		<script type="text/javascript">
+			function loadPage(style,url)
+			{
+				alert(style);
+				bridge.load(url,"onData","onProgress");
+				loading.style = style;
+				
+			
+			}
+			
+			function onData(info)
+			{              
+				
+				var content = document.getElementById("content")
+				content.innerHTML = info;
+				
+				//alert(loading.style.width.substr(0,1))
+				//var tw = new Tween(loading.style,"width",Tween.strongEaseOut,substr(loading.style.width,-1),100,1,'%');
+				//tw.start();
+			}    
+			
+			function onProgress(percentLoaded)
+			{
+			   	loading.style.width = percentLoaded+"%";
+				percentLoaded.innerHTML = percentLoaded+"%";
+				
+				
+			}
+		</script>
+		
+	</head>
+	<body>
+		<div id="links">
+			<a href="#" onMouseUp="Javascript:loadPage('background:url(assets/images/patt/star.jpg); background-position:top','pages/about.html')"> about </a>
+			<a href="#" onMouseUp="Javascript:loadPage('#009900','pages/projects.html')"> projects </a>
+			<a href="#" onMouseUp="Javascript:loadPage('#FF6600','pages/home.html')"> about </a>
+		</div>
+		<div id="contentBody">
+			<div id="loading" />
+			<div id="logo">Craig Condon</div>
+			<div id="content"> 
+			</div>
+		</div>
+		
+		
+		
+		<div id="flashcontent">
+			<strong>You need to upgrade your Flash Player</strong>
+			This is replaced by the Flash content. 
+			Place your alternate content here and users without the Flash plugin or with 
+			Javascript turned off will see this. Content here allows you to leave out <code>noscript</code> 
+			tags. Include a link to <a href="fullpage.html?detectflash=false">bypass the detection</a> if you wish.
+		</div>
+	
+		<script type="text/javascript">
+			// <![CDATA[
+		
+			var so = new SWFObject("assets/swf/Bridge.swf", "bridge", "0", "0", "9", "#111111");
+			so.addVariable("script", "assets/xml/craigcondon.xml");
+
+			so.addParam("scale", "noscale");
+			so.addParam("allowFullScreen","true");
+			so.write("flashcontent");
+		
+		// ]]>
+		</script>
+		
+		<div id="content"></div>
+		
+	</body>
+</html>
