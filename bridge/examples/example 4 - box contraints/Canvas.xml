@@ -1,0 +1,49 @@
+<Bridge>  
+	<Style> 
+		.hBox
+		{
+			alignment:'horizontal';
+			gap:5; 
+			percentWidth:100;
+			backgroundColors:#FF6600;
+			backgroundAlphas:0.2;
+			
+		} 
+		.vBox
+		{
+			percentWidth:100;
+			percentHeight:100;
+			backgroundAlphas:0.01;  
+			alignment:'vertical';
+			gap:10;
+		}
+		.orangeBox
+		{
+			backgroundColors:#FF6600;
+			percentWidth:100;
+		}
+	</Style>
+	
+	<Container styleName=".vBox">
+		<Container styleName=".hBox">
+			<TextArea percentWidth="100" text="hello world!" />  
+			<TextArea percentWidth="100" text="hello world!" />  
+			<TextArea percentWidth="100" text="hello world!" />  
+			<TextArea percentWidth="100" text="hello world!" />  
+			<TextArea percentWidth="100" text="hello world!" />  
+			<TextArea percentWidth="100" text="hello world!" />  
+			<TextArea percentWidth="100" text="hello world!" />  
+			<TextArea percentWidth="100" text="hello world!" />  
+		</Container>
+		<Container styleName=".hBox"> 
+			<Container styleName=".orangeBox" />
+			<Container styleName=".orangeBox" />  
+			<Container />
+			<Container styleName=".orangeBox" />
+			<Container styleName=".orangeBox" />
+			<Container styleName=".orangeBox" /> 
+			<Container />
+			<Container />
+		</Container>    
+	</Container>  
+</Bridge>

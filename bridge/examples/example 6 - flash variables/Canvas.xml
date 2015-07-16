@@ -1,0 +1,5 @@
+<Bridge>  
+	<Container style="backgroundAlphas:0.01;alignment:'horizontal';gap:10">                            
+		<Label text="{flashVars.myFlashVar} - look in the html source code" style="fontColor:#0000FF;" />	
+	</Container>
+</Bridge>
